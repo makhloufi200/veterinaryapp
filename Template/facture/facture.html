@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'facture/style.css' %}">
+</head>
+<form method="POST">
+<font size="5" face="georgia" color="blue" >
+	<div>
+		<a  href="{% url 'update_facture' facture.id %}" >edit</a>
+		<a  href="{% url 'facture_delete' facture.id %}" >delete</a>
+	</div>
+</font>
+<font size="5" face="georgia" color="black" >
+<div>
+	
+    <div>
+    {{ facture.invoice_number }}
+	<div>
+	<div>
+    {{ facture.date_opp }}
+	<div>
+	<div>
+    {{ facture.customer }}
+	<div>
+	<div>
+    {{ facture.animal }}
+	<div>
+	<div>
+    {{ facture.quantity_animal }}
+	<div>
+	<div>
+    {{ facture.address }}
+	<div>
+	<div>
+    {{ facture.total_price }}
+	<div>
+	
+</div>
+</font>
+	<div>
+		<div>
+			<font size="5" face="georgia" color="blue" ><a  href="{% url 'create_facture_medecine' facture.id %}">Add Medcine</a></font>
+		</div>
+		<table class="tborder">
+				<thead>
+					<tr>
+						<td>
+							<span>الرقم التسلسلي</span>
+						</td>
+						<td>
+							<span>رقم الفاتورة</span>
+						</td>
+						<td>
+							<span>نوع الدواء</span>
+						</td>
+						<td>
+							<span>الكمية</span>
+						</td>
+						<td>
+							<span>ثمن الوحدة</span>
+						</td>
+						
+						<td>
+							<span>المبلغ الاجمالي</span>
+						</td>
+						<td>
+							<span></span>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for medecine in facture.medecines.all %}
+						<div>
+							<tr>
+								<th>
+									<p>{{ forloop.counter }}</p>
+								</th>
+								
+								<th>
+									<p>{{medecine.invoice}}</p></a>
+								</th>
+								<th>
+									<p>{{medecine.medecine}}</p>
+								</th>
+								<th>
+									<p>{{medecine.quantity_medicine}}</p>
+								</th>
+								<th>
+									<p>{{medecine.sale_price}}</p>
+								</th>
+								<th>
+									<p>{{medecine.total_price}}</p>
+								</th>
+								<th>
+									<a  href="{{ medecine.id }}">delete</a>
+								</th>
+							</tr>
+						</div>
+					{% endfor %}
+				</tbody>
+			</table>
+	</div>
+</form>
+        <script
+   src="https://code.jquery.com/jquery-3.3.1.min.js"
+   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+   crossorigin="anonymous"></script>
+{% endblock %}

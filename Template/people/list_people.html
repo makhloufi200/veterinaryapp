@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} List Peoples {% endblock %}
+
+{% block content %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'people/style.css' %}">
+</head>
+<!--
+<h1>Search</h1>
+<form action="." method="GET">
+<label for="q">Search: </label>
+<input type="text" name="q" value="{{ query|escape }}">
+<input type="submit" value="Search">
+</form>
+{% if query %}
+<h2>Results for "{{ query|escape }}":</h2>
+{% if results %}
+<ul>
+{% for people in results %}
+<li>{{ people|escape }}</l1>
+{% endfor %}
+</ul>
+{% else %}
+<p>No books found</p>
+{% endif %}
+{% endif %}
+-->
+<div id="main">
+    <form>
+        <div class="people-list">
+		<div><font size="5" face="georgia" color="blue" ><a  href="{% url 'create_people' %}">Add</font></a></div>
+            <table class="tborder">
+				<thead>
+					<tr>
+						<td>
+							<span>الرقم التسلسلي</span>
+						</td>
+						<td>
+							<span>صفة الشخص</span>
+						</td>
+						<td>
+							<span>اسم و لقب المعني</span>
+						</td>
+						<td>
+							<span>رقم الهاتف</span>
+						</td>
+						<td>
+							<span>رقم الهاتف 2</span>
+						</td>
+						<td>
+							<span>العنوان</span>
+						</td>
+						<td>
+							<span>البريد الالكتروني</span>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for people in peoples %}
+						<div>
+							<tr>
+								<th>
+									<p>{{ forloop.counter }}</p>
+								</th>
+								<th>
+									<p>{{people.type_people}}</p>
+								</th>
+
+								<th>
+									<a href="{{ people.id }}"><p>{{people.name}}</p></a>
+								</th>
+								<th>
+									<p>{{people.telephone_number}}</p>
+								</th>
+								<th>
+									<p>{{people.telephone_number1}}</p>
+								</th>
+								<th>
+									<p>{{people.address}}</p>
+								</th>
+								<th>
+									<p>{{people.email}}</p>
+								</th>
+							</tr>
+						</div>
+					{% endfor %}
+				</tbody>
+			</table>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

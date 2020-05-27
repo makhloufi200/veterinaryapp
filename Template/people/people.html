@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'people/style.css' %}">
+</head>
+<form method="POST">
+<font size="5" face="georgia" color="blue" >
+	<div>
+		<a  href="{% url 'update_people' people.id %}">edit</a>
+		<a  href="{% url 'people_delete' people.id %}">delete</a>
+	</div>
+</font>	
+    {% csrf_token %}
+	 <table class="tborder">
+				<thead>
+					<tr>
+						
+						<td>
+							<span>صفة الشخص</span>
+						</td>
+						<td>
+							<span>اسم و لقب المعني</span>
+						</td>
+						<td>
+							<span>رقم الهاتف</span>
+						</td>
+						<td>
+							<span>رقم الهاتف 2</span>
+						</td>
+						<td>
+							<span>العنوان</span>
+						</td>
+						<td>
+							<span>البريد الالكتروني</span>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+				
+						<div>
+							<tr>
+								
+								<th>
+									<p>{{people.type_people}}</p>
+								</th>
+
+								<th>
+									<p>{{people.name}}</p>
+								</th>
+								<th>
+									<p>{{people.telephone_number}}</p>
+								</th>
+								<th>
+									<p>{{people.telephone_number1}}</p>
+								</th>
+								<th>
+									<p>{{people.address}}</p>
+								</th>
+								<th>
+									<p>{{people.email}}</p>
+								</th>
+							</tr>
+						</div>
+					
+				</tbody>
+			</table>
+	
+</form>
+        <script
+   src="https://code.jquery.com/jquery-3.3.1.min.js"
+   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+   crossorigin="anonymous"></script>
+{% endblock %}

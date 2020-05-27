@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Facture {% endblock %}
+
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'facture/style.css' %}">
+</head>
+<div id="main">
+    <form>
+        <div class="people-list">
+            <table class="tborder">
+				<thead>
+					<tr>
+						<td>
+							<span>الرقم التسلسلي</span>
+						</td>
+						<td>
+							<span>تاريخ الفاتورة</span>
+						</td>
+						<td>
+							<span>الزبون</span>
+						</td>
+						<td>
+							<span>نوع الحيوان</span>
+						</td>
+						<td>
+							<span>العدد</span>
+						</td>
+						<td>
+							<span>العنوان</span>
+						</td>
+						<td>
+							<span>مبلغ الفاتورة</span>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for facture in factures %}
+						<div>
+							<tr>
+								<th>
+									<p>{{ forloop.counter }}</p>
+								</th>
+								
+								<th>
+									<a href="{{ facture.id }}"><p>{{facture.date_opp}}</p></a>
+								</th>
+								<th>
+									<p>{{facture.invoice}}</p>
+								</th>
+								<th>
+									<p>{{facture.medecine}}</p>
+								</th>
+								<th>
+									<p>{{facture.quantity_medicine}}</p>
+								</th>
+								<th>
+									<p>{{facture.sale_price}}</p>
+								</th>
+								<th>
+									<p>{{facture.total_price}}</p>
+								</th>
+							</tr>
+						</div>
+					{% endfor %}
+				</tbody>
+			</table>
+        </div>
+    </form>
+</div>
+<div><a  href="{% url 'create_facture' %}">Add</a></div>
+{% endblock %}
+

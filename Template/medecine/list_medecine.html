@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Vets {% endblock %}
+
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'facture/style.css' %}">
+</head>
+<font size="6" face="georgia" color="blue" ><div><a  href="{% url 'create_medecine' %}">Add</a></div></font>
+<div id="main">
+    <form>
+        <div class="people-list">
+            <table class="tborder">
+				<thead>
+					<tr>
+						<td>
+							<span>الرقم التسلسلي</span>
+						</td>
+						<td>
+							<span>اسم الدواء</span>
+						</td>
+						<td>
+							<span>الكمية المتوفرة</span>
+						</td>
+						<td>
+							<span>ثمن البيع للوحدة</span>
+						</td>
+						<td>
+							<span>حالة المخزون</span>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for medecine in medecines %}
+						<div>
+							<tr>
+								<th>
+									<p>{{ forloop.counter }}</p>
+								</th>
+								
+								<th>
+									<a href="{{ medecine.id }}"><p>{{medecine.name}}</p></a>
+								</th>
+								<th>
+									<p>{{medecine.quantity}}</p>
+								</th>
+								<th>
+									<p>{{medecine.sale_price}}</p>
+								</th>
+								<th>
+									<p>{{medecine.status}}</p>
+								</th>
+								
+							</tr>
+						</div>
+					{% endfor %}
+				</tbody>
+			</table>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

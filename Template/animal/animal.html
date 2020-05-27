@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST">
+<div>
+		<a  href="{% url 'update_animal' animal.id %}">edit</a>
+		<a  href="{% url 'animal_delete' animal.id %}">delete</a>
+	</div>
+    {% csrf_token %}
+	<div>
+    {{ animal.name }}
+	<div>
+	
+	
+</form>
+        <script
+   src="https://code.jquery.com/jquery-3.3.1.min.js"
+   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+   crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Facture {% endblock %}
+
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'facture/style.css' %}">
+</head>
+<body>
+<div id="main">
+    <form>
+		<div><a  href="{% url 'create_facture' %}">Add Facture</a></div>
+        <div class="people-list">
+            <table class="tborder">
+				<thead>
+					<tr>
+						<td>
+							<span>الرقم التسلسلي</span>
+						</td>
+						<td>
+							<span>رقم الفاتورة</span>
+						</td>
+						<td>
+							<span>تاريخ الفاتورة</span>
+						</td>
+						<td>
+							<span>الزبون</span>
+						</td>
+						<td>
+							<span>نوع الحيوان</span>
+						</td>
+						<td>
+							<span>العدد</span>
+						</td>
+						<td>
+							<span>العنوان</span>
+						</td>
+						<td>
+							<span>مبلغ الفاتورة</span>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for facture in factures %}
+						<div>
+							<tr>
+								<th>
+									<p>{{ forloop.counter }}</p>
+								</th>
+								
+								<th>
+									<a href="{{ facture.id }}"><p>{{facture.num_fact}}</p></a>
+								</th>
+								<th>
+									<p>{{facture.date_opp}}</p>
+								</th>
+								<th>
+									<p>{{facture.client}}</p>
+								</th>
+								<th>
+									<p>{{facture.animal}}</p>
+								</th>
+								<th>
+									<p>{{facture.quantite_animal}}</p>
+								</th>
+								<th>
+									<p>{{facture.location}}</p>
+								</th>
+								<th>
+									<p>{{facture.somme_money}}</p>
+								</th>
+							</tr>
+						</div>
+					{% endfor %}
+				</tbody>
+			</table>
+        </div>
+    </form>
+</div>
+{% endblock %}
+</body>

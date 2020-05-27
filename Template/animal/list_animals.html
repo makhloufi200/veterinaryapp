@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Vets {% endblock %}
+
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'animal/style.css' %}">
+</head>
+<body>
+<h5 align = "center"><div><a class="link-b" href="{% url 'create_animal' %}">Add Animal</a></div><h5>
+<table align = "center">
+	<tr>
+		<td>
+			<span>اسم الحيوان</span>
+		</td>
+	</tr>
+    {% for animal in animals %}
+    <tr>
+		<th>
+			<a href="{{ animal.id }}">{{ animal.name }}</a><br>
+		</th>
+    </tr>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+</body>

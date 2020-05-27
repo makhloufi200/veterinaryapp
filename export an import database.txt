@@ -1,0 +1,10 @@
+export database:
+
+
+manage.py dumpdata --exclude auth.permission --exclude contenttypes >db.json
+
+
+import database:
+
+
+manage.py loaddata db.json

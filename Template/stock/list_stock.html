@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Vets {% endblock %}
+
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'facture/style.css' %}">
+</head>
+<div id="main">
+    <form>
+        <div class="people-list">
+		<div><font size="5" face="georgia" color="blue" ><a  href="{% url 'create_stock' %}">Add</font></a></div>
+            <table class="tborder">
+				<thead>
+					<tr>
+						<td>
+							<span>الرقم التسلسلي</span>
+						</td>
+						<td>
+							<span>اسم الدواء</span>
+						</td>
+						<td>
+							<span>حالة المخزون</span>
+						</td>
+						<td>
+							<span>تاريخ الشراء</span>
+						</td>
+						<td>
+							<span>تاريخ نهاية الصلاحية</span>
+						</td>
+						<td>
+							<span>الكمية</span>
+						</td>
+						<td>
+							<span>ثمن الشراء (للوحدة)</span>
+						</td>
+						<td>
+							<span>ثمن البيع (للوحدة)</span>
+						</td>
+						<td>
+							<span>مدة الانتظار</span>
+						</td>
+						<td>
+							<span>الثمن الاجمالي للشراء</span>
+						</td>
+						<td>
+							<span>الممون</span>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for stock in stocks %}
+						<div>
+							<tr>
+								<th>
+									<p>{{ forloop.counter }}</p>
+								</th>
+								
+								<th>
+									<a href="{{ stock.id }}"><p>{{stock.medecine}}</p></a>
+								</th>
+								<th>
+									<p>{{stock.date_achat}}</p>
+								</th>
+								<th>
+									<p>{{stock.date_made}}</p>
+								</th>
+								<th>
+									<p>{{stock.date_expired}}</p>
+								</th>
+								<th>
+									<p>{{stock.quantite}}</p>
+								</th>
+								<th>
+									<p>{{stock.prix_achat_unite}}</p>
+								</th>
+								<th>
+									<p>{{stock.prix_vent}}</p>
+								</th>
+								<th>
+									<p>{{stock.delai_attente}}</p>
+								</th>
+								<th>
+									<p>{{stock.somme_money}}</p>
+								</th>
+								<th>
+									<p>{{stock.fornisseur}}</p>
+								</th>
+							</tr>
+						</div>
+					{% endfor %}
+				</tbody>
+			</table>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

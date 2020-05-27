@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST">
+<font size="5" face="georgia" color="blue" >
+	<div>
+		<a  href="{% url 'update_medecine' medicine.id %}">edit</a>
+		<a  href="{% url 'medecine_delete' medicine.id %}">delete</a>
+	</div>
+</font>	
+<font size="5" face="georgia" color="black" >
+    {% csrf_token %}
+	<div>
+    {{ medecine.name }}
+	<div>
+	<div>
+    {{ medecine.status }}
+	<div>
+</font>	
+</form>
+        <script
+   src="https://code.jquery.com/jquery-3.3.1.min.js"
+   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+   crossorigin="anonymous"></script>
+{% endblock %}

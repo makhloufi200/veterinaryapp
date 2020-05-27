@@ -165,7 +165,6 @@ PyHamcrest==2.0.2
 pyOpenSSL==19.1.0
 pyparsing==2.4.0
 PyPDF2==1.26.0
-pypiwin32==223
 PyQt5==5.12.3
 PyQt5-sip==4.19.17
 pyrsistent==0.15.2

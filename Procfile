@@ -1,1 +1,1 @@
-web: gunicorn veterinaryapp:app
+web: gunicorn veterinaryapp.wsgi

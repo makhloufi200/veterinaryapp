@@ -3,3 +3,4 @@ mysqlclient
 Pillow
 django-crispy-forms
 django-favicon-plus
+gunicorn==19.7.1

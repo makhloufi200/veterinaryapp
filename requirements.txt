@@ -151,7 +151,6 @@ psycopg2==2.7.4
 psycopg2-binary==2.7.4
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
-PyAudio==0.2.11
 pycparser==2.18
 PyDispatcher==2.0.5
 pydot==1.4.1
@@ -181,6 +180,7 @@ pyttsx3==2.71
 pytz==2019.1
 PyWavelets==1.0.3
 pywifi==1.1.12
+pywin32==224
 pywinpty==0.5.7
 PyYAML==5.1.2
 pyzmq==19.0.0

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import People
+from .models import Supplier
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from .forms import PeopleForm
@@ -7,12 +7,12 @@ from django.db.models import Q
 # Create your views here.
 
 def list_people(request):
-	objs = People.objects.all()
+	objs = Supplier.objects.all()
 	
 	return render(request, 'people/list_people.html', {'peoples': objs})
 	
 def datail_people(request, people_id):
-    people = get_object_or_404(People, pk=people_id)
+    people = get_object_or_404(Supplier, pk=people_id)
     return render(request, 'people/people.html', {'people': people})	
 	
 def create_people(request):
@@ -42,7 +42,7 @@ def update_people(request, people_id):
 
 
 def people_delete(request, people_id):
-    instance = get_object_or_404(People, pk=people_id)
+    instance = get_object_or_404(Supplier, pk=people_id)
     instance.delete()
 
     return redirect("list_people")	

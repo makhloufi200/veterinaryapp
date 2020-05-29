@@ -1,10 +1,21 @@
 from django.shortcuts import render
 from .models import Animals
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from .forms import AnimalsForm
+import csv
 # Create your views here.
 
+def export_animal_csv(request):
+	response = HttpResponse(content_type='text/csv')
+	response['Content-Disposition'] = 'attachement; filename="animal.csv"'
+	writer = csv.writer(response)
+	writer.writerow(['name'])
+	animals = Animals.objects.all().values_list('name')
+	for animal in animals:
+		writer.writerow(animal)
+	return response	
+	
 def list_animal(request):
 	objs = Animals.objects.all()
 	

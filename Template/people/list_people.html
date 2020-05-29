@@ -37,9 +37,7 @@
 						<td>
 							<span>الرقم التسلسلي</span>
 						</td>
-						<td>
-							<span>صفة الشخص</span>
-						</td>
+						
 						<td>
 							<span>اسم و لقب المعني</span>
 						</td>
@@ -55,6 +53,9 @@
 						<td>
 							<span>البريد الالكتروني</span>
 						</td>
+						<td>
+							<span>مبلغ التعامل</span>
+						</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,10 +65,7 @@
 								<th>
 									<p>{{ forloop.counter }}</p>
 								</th>
-								<th>
-									<p>{{people.type_people}}</p>
-								</th>
-
+								
 								<th>
 									<a href="{{ people.id }}"><p>{{people.name}}</p></a>
 								</th>
@@ -82,6 +80,9 @@
 								</th>
 								<th>
 									<p>{{people.email}}</p>
+								</th>
+								<th>
+									<p>{{people.transaction_amount}}</p>
 								</th>
 							</tr>
 						</div>

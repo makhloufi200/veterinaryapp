@@ -2,16 +2,21 @@
 
 {% block content %}
 <form method="POST">
-<div>
+<div align="center">
+<font size="5" face="georgia" color="blue" >
 		<a  href="{% url 'update_animal' animal.id %}">edit</a>
 		<a  href="{% url 'animal_delete' animal.id %}">delete</a>
-	</div>
+</font>		
+</div>
+<font size="5" face="georgia" color="black" >
+<div align="center" class="content-section">
     {% csrf_token %}
 	<div>
+	<label>Name:</label>
     {{ animal.name }}
 	<div>
-	
-	
+</div>	
+</font>	
 </form>
         <script
    src="https://code.jquery.com/jquery-3.3.1.min.js"

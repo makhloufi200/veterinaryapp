@@ -2,13 +2,13 @@ from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse_lazy
 from medicine.models import Medicine
-from people.models import People
+from people.models import Supplier
 from animal.models import Animals
 from django.shortcuts import render, redirect, get_object_or_404
 # Create your models here.
 
 
-class AchatMedecine(models.Model):
+class BuyMedicine(models.Model):
 	medicine = models.ForeignKey(Medicine, on_delete=models.CASCADE)
 	date_achat = models.DateField(null=True,default=None, blank=True)
 	date_made = models.DateField(null=True,default=None, blank=True)
@@ -19,7 +19,7 @@ class AchatMedecine(models.Model):
 	#test_money_field = models.MoneyField(decimal_places=2,default=0,default_currency='USD',max_digits=8)
 	somme_money = models.DecimalField(max_digits=8,decimal_places=2)
 	delai_attente = models.IntegerField()
-	fornisseur = models.ForeignKey(People, on_delete=models.CASCADE)
+	supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
 
 	
 	
@@ -38,7 +38,7 @@ class AchatMedecine(models.Model):
 		super().save(*args, **kwargs)
 
 	def get_absolute_url(self):
-		return reverse_lazy('achat', args=[self.slug])
+		return reverse_lazy('buy', args=[self.slug])
 		
 	def __str__(self):
 		return self.medicine

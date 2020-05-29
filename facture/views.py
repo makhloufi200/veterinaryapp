@@ -18,7 +18,7 @@ def create_facture(request):
     if not request.user.is_authenticated:
         raise Http404
 
-    form = FactureForm(request.POST or None)
+    form = InvoiceForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
@@ -31,7 +31,7 @@ def update_facture(request, facture_id):
 		raise Http404
 	instance = get_object_or_404(Invoice, pk=facture_id)
 
-	form = FactureForm(request.POST or None, instance=instance)
+	form = InvoiceForm(request.POST or None, instance=instance)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()
@@ -47,16 +47,16 @@ def facture_delete(request, facture_id):
     return redirect("list_facture")													
 	
 def list_facture_medecine(request):
-	objs = FactureMedecine.objects.all()
+	objs = MedicationBill.objects.all()
 	
 	return render(request, 'facture/list_facture _medcine.html', {'factures': objs})
 
 	
 def create_facture_medecine(request, facture_id):
-	objs = FactureMedecine.objects.all()
+	objs = MedicationBill.objects.all()
 	if not request.user.is_authenticated:
 		raise Http404	
-	form = FactureMedcineForm(request.POST or None)
+	form = MedicationBillForm(request.POST or None)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()

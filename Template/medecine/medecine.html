@@ -4,16 +4,18 @@
 <form method="POST">
 <font size="5" face="georgia" color="blue" >
 	<div>
-		<a  href="{% url 'update_medecine' medicine.id %}">edit</a>
-		<a  href="{% url 'medecine_delete' medicine.id %}">delete</a>
+		<a  href="{% url 'update_medecine' medecine.id %}">edit</a>
+		<a  href="{% url 'medecine_delete' medecine.id %}">delete</a>
 	</div>
 </font>	
 <font size="5" face="georgia" color="black" >
     {% csrf_token %}
 	<div>
+	<label>Name:</label>
     {{ medecine.name }}
 	<div>
 	<div>
+	<label>State:</label>
     {{ medecine.status }}
 	<div>
 </font>	

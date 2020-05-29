@@ -1,10 +1,16 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-<form method="POST">
+{% load static %}
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'animal/style.css' %}">
+</head>
+<form method="POST" align = "center">
+<div class="content-section">
     {% csrf_token %}
-    {{form.as_p}}
+    {{ form|crispy }}
     <button class="btn btn-primary" type="submit">save</button>
+</div>
 </form>
         <script
    src="https://code.jquery.com/jquery-3.3.1.min.js"

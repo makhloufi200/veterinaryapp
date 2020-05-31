@@ -30,7 +30,7 @@ def create_people(request):
 def update_people(request, people_id):
 	if not request.user.is_authenticated:
 		raise Http404
-	instance = get_object_or_404(People, pk=people_id)
+	instance = get_object_or_404(Supplier, pk=people_id)
 
 	form = PeopleForm(request.POST or None, instance=instance)
 	if form.is_valid():

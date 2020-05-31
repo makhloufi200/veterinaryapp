@@ -4,4 +4,4 @@ Pillow
 django-crispy-forms
 django-favicon-plus
 gunicorn==19.7.1
-whitenoise==3.3.1
+whitenoise==5.0.1

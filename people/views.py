@@ -1,11 +1,22 @@
 from django.shortcuts import render
 from .models import Supplier
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from .forms import PeopleForm
 from django.db.models import Q
+import csv
 # Create your views here.
 
+def export_costomer_csv(request):
+	response = HttpResponse(content_type='text/csv')
+	response['Content-Disposition'] = 'attachement; filename="costomer.csv"'
+	writer = csv.writer(response)
+	writer.writerow(['name','telephone_number','telephone_number1','email','address','transaction_amount'])
+	suppliers = Supplier.objects.all().values_list('name','telephone_number','telephone_number1','email','address','transaction_amount')
+	for supplier in suppliers:
+		writer.writerow(supplier)
+	return response	
+	
 def list_people(request):
 	objs = Supplier.objects.all()
 	

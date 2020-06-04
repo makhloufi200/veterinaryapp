@@ -8,5 +8,6 @@ urlpatterns = [
 	path('people/<int:people_id>/', people_view.datail_people, name='datail_people'),
 	path('people/<int:people_id>/edit/', people_view.update_people, name="update_people"),
     path('people/<int:people_id>/delete/', people_view.people_delete, name="people_delete"),
+	path('people/export', people_view.export_costomer_csv, name='export_costomer_csv'),
     
 ]

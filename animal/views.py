@@ -4,17 +4,30 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponse
 from .forms import AnimalsForm
 import csv
+import docx
 # Create your views here.
 
 def export_animal_csv(request):
-	response = HttpResponse(content_type='text/csv')
-	response['Content-Disposition'] = 'attachement; filename="animal.csv"'
-	writer = csv.writer(response)
-	writer.writerow(['name'])
+	objs = Animals.objects.all()
+	#response['Content-Disposition'] = 'attachement; filename="animal.csv"'
+	#writer = csv.writer(response)
+	#writer.writerow(['name'])
 	animals = Animals.objects.all().values_list('name')
-	for animal in animals:
-		writer.writerow(animal)
-	return response	
+	doc = docx.Document()
+	p = doc.add_paragraph('List of Animals')
+		
+	
+	#doc.save('multipleParagraphs.docx')
+	row_count = len(animals)
+	table = doc.add_table(rows=row_count, cols=1)
+	
+	for i in range(row_count):
+		row = table.rows[i]
+		
+		#for animal in animals:
+		row.cells[0].text = animals[i]
+	doc.save('multipleParagraphs.docx')	
+	return render(request, 'animal/list_animals.html', {'animals': objs})
 	
 def list_animal(request):
 	objs = Animals.objects.all()
